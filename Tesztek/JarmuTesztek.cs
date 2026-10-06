@@ -199,5 +199,28 @@ namespace Tesztek
             Assert.That(auto.KilometerOra, Is.EqualTo(190000));
             Assert.That(auto.AkkumulatorSzint, Is.EqualTo(70));
         }
+        [Test]
+        public void Motor_KezdoErtek_Korlatok_EsSzervizeles_HelyesenMukodik()
+        {
+            Motor motor = new Motor("MOT-123", 4, 200000, 60);
+            //fix kezdoertek(konstruktor)
+            Assert.That(motor.GumiAllapot, Is.EqualTo(80));
+            //property also,felso korlat
+            motor.GumiAllapot = -10;
+            Assert.That(motor.GumiAllapot, Is.EqualTo(0));
+
+            motor.GumiAllapot = 150;
+            Assert.That(motor.GumiAllapot, Is.EqualTo(100));
+
+            //javul az allapot de legfeljebb 100 lehet
+            motor.GumiAllapot = 90;
+            motor.Szervizel(150000);
+
+            Assert.That(motor.GumiAllapot, Is.EqualTo(100));
+
+            // az ososztaly szervizelese lefutott
+            Assert.That(motor.KilometerOra, Is.EqualTo(190000));
+            Assert.That(motor.UzemanyagSzint, Is.EqualTo(50));
+        }
     }
 }
