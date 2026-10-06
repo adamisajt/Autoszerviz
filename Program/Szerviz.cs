@@ -21,7 +21,7 @@ namespace Program
                 jarmu.InformaciotAd();
             }
         }
-        
+
         public void CsoportosSzerviz(int dij)
         {
             foreach (Jarmu jarmu in jarmuvek)
@@ -32,10 +32,11 @@ namespace Program
                 }
                 else
                 {
-                    Console.WriteLine( $"A {jarmu.Rendszam} szervizelese nem szukseges ");
+                    Console.WriteLine($"A {jarmu.Rendszam} szervizelese nem szukseges ");
                 }
             }
 
 
         }
     }
+}

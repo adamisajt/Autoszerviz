@@ -10,7 +10,7 @@ namespace Program
         public int GumiAllapot
         {
             get => gumiAllapot;
-            set => gumiAllapot = Math.Clamp(value, 0, 100)
+            set => gumiAllapot = Math.Clamp(value, 0, 100);
         }
         public Motor(
              string rendszam, int kor, int kilometerOra, int uzemanyagSzint)
